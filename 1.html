@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../untitled1/jquery.js"></script>
+    <style>
+        .dv{
+            overflow: hidden;
+            background-color: red;
+        }
+           </style>
+</head>
+<body>
+<div id="dv">
+    <table>
+        <tbody id="tb">
+        </tbody>
+    </table>
+    <input id="in">
+    <button id="btn">Save</button>
+    <button id="btn2">Egor</button>
+</div>
+<p id="p1" >Абзац</p><input type="button" id="ibutton" value="Скрыть или отобразить абзац">
+<script>
+ /*  var arr=[
+        {
+            name: 'Egor',
+            old: 25
+        },
+        {
+            name: "Egor1",
+            old : 30
+        }
+    ]
+ $("#btn").click(function () {
+     $("#dv").toggleClass("dv");
+ });
+ $("#btn2").click(function () {
+     $("#tb").append(function () {
+         var text="";
+         for(var i=0; i<arr.length; i++){
+             text+="<tr><td>"+arr[i].name+"</td>"+
+                 "<td>"+arr[i].old+"</td></tr>"
+         }
+         return text;
+
+     });
+ });
+*/
+  $("#ibutton").click(function()   { 
+     $("#p1").css('opacity',0.4).hover(function () {
+         $(this).stop().fadeTo(600,1)
+
+     },
+        function () {
+         $(this).stop().fadeTo(600, 0.4)
+
+        }
+  );})
+
+
+</script>
+
+</body>
+
+</html>

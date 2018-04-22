@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+    <script src="../untitled1/jquery.js"></script>
+</head>
+<body>
+Введите имя
+<input id="inp">
+<button id="btn1">Отправить Get=запрос</button>
+<button id="btn2">Отправить Post-запрос</button>
+<button id="btn3">Отправить Post-запрос2</button>
+<script>
+$("#btn1").click(function () {
+  var text =  $("#inp").val()
+    if(text==""){ alert("Пусто")}
+    else{
+    /*  $.ajax({
+          url: "http://localhost:8080/test/test/say?name="+text,
+          type:"GET",
+       // data: ,
+       // contentType: ,
+          success:function (res) {
+              console.log(res);
+          } ,
+          error: function (res) {
+              console.log(res);
+          }
+      }) */
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8080/test/test/say?name="+text, false)
+        xhr.send()
+        if (xhr.status != 200){
+            // обработать ошибку
+            alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+        } else {
+// вывести результат
+            alert( xhr.responseText ); // responseText -- текст ответа.
+        }
+
+    }
+
+})
+$("#btn2").click(function () {
+    var obj = {name:"",
+               lastname:""
+    }
+   /*     $.ajax({
+            url: "http://localhost:8080/test/test/test_p",
+            type:"POST",
+            data: JSON.stringify(obj) ,
+            contentType: "application/JSON",
+            success:function (res) {
+                console.log(res);
+            } ,
+            error: function (res) {
+                console.log(res);
+            }
+        }) */
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8080/test/test/test_p", false)
+    xhr.send(JSON.stringify(obj))
+    if (xhr.status != 200){
+        // обработать ошибку
+        alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+    } else {
+// вывести результат
+        alert( xhr.responseText ); // responseText -- текст ответа.
+    }
+
+})
+
+$("#btn3").click(function () {
+    var obj = {str1:"",
+                str2:""
+    }
+    $.ajax({
+        url: "http://localhost:8080/test/test/object",
+        type:"POST",
+        data: JSON.stringify(obj) ,
+        contentType: "application/JSON",
+        success:function (res) {
+            console.log(res);
+        } ,
+        error: function (res) {
+            console.log(res);
+        }
+    })
+})
+</script>
+</body>
+</html>
